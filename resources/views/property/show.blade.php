@@ -57,8 +57,8 @@ Details
                         <div class="row">
                           <div class="col-sm-6">
                                 <div class="row mgbt-xs-0">
-                                    <label class="col-xs-5 control-label">Title :</label>
-                                  <div class="col-xs-7 controls"></div>
+                                    <label class="col-xs-5 control-label">Title : </label>
+                                  <div class="col-xs-7 controls">{{$details->title}}</div>
                                   <!-- col-sm-10 --> 
                                 </div>
                           </div>
@@ -143,7 +143,7 @@ Details
                         </div>
                         <div class="card-header p-2"></div><br>
 
-                        <h3>BANK DETAILS</h3><br>
+                      {{--  <h3>BANK DETAILS</h3><br>
                         <div class="row">
                           <div class="col-sm-6">
                                 <div class="row mgbt-xs-0">
@@ -208,9 +208,9 @@ Details
                                   <!-- col-sm-10 --> 
                                 </div>
                           </div>
-                        </div>
+                        </div>--}}
                         <div class="card-header p-2"></div><br>
-                        <h3>OFFICE DETAILS</h3><br>
+                        {{--<h3>OFFICE DETAILS</h3><br>
                         <div class="row">
                              <div class="col-sm-6">
                                 <div class="row mgbt-xs-0">
@@ -338,7 +338,7 @@ Details
                                   <!-- col-sm-10 --> 
                                 </div>
                           </div> 
-                        </div>
+                        </div>--}}
                          
                   </div>
                 

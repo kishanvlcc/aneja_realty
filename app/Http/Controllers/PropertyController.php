@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\PropertyLocation;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -30,6 +31,7 @@ class PropertyController extends Controller
 
     public function create(){
 
+        $data['locations'] = PropertyLocation::where('status',1)->orderBy('name')->get();
         $data['builtUpAreas'] = AreaType::where('status',1)->get();
         $data['types'] = PropertyType::where('status',1)->get();
         return view('property/create')->with($data);
@@ -49,6 +51,10 @@ class PropertyController extends Controller
         $properties->bedrooms = $request->bedrroms;
         $properties->total_floors = $request->total_floors;
         $properties->floor_number = $request->floor_number;
+        $properties->client_name = $request->client_name;
+        $properties->client_email = $request->client_email;
+        $properties->client_mobile_number = $request->client_mobile;
+        $properties->building_stage = $request->building_stage;
         $properties->available_for = $request->available_for;
         $properties->property_type_area_id = $request->available_type;
         $properties->area_type_id = $request->built_area_type;
@@ -62,21 +68,27 @@ class PropertyController extends Controller
         $properties->flat_configuration = $request->flat_cofiguration;
         $properties->description = $request->description;
         $properties->complete_address = $request->complete_address;
-        $properties->image = $request->img_name;
         $properties->property_type = $request->property_type;
         $properties->created_by = Auth::User()->id;
         $properties->updated_by = Auth::User()->id;
-        $properties->total_file = $request->total_file;
+
 
         $properties->save();
 
-        return redirect(route('property.index'));
+        if ($request->available_for==1){
+            $type = 'residence';
+        } else {
+            $type = 'commercial';
+        }
+
+        return redirect(url('property?type='.$type));
 
     }
 
     public function edit($id)
     {
         $data['properties'] = Property::where('id',$id)->first();
+        $data['locations'] = PropertyLocation::where('status',1)->orderBy('name')->get();
         $data['types'] = PropertyType::where('status',1)->get();
         $data['builtUpAreas'] = AreaType::where('status',1)->get();
         $data['PropertyAreaTypes'] = PropertyTypeArea::where('status',1)->where('property_type_id',$data['properties']['available_for'])->get();
@@ -93,6 +105,10 @@ class PropertyController extends Controller
         $properties->bedrooms = $request->bedrroms;
         $properties->total_floors = $request->total_floors;
         $properties->floor_number = $request->floor_number;
+        $properties->client_name = $request->client_name;
+        $properties->client_email = $request->client_email;
+        $properties->client_mobile_number = $request->client_mobile;
+        $properties->building_stage = $request->building_stage;
         $properties->available_for = $request->available_for;
         $properties->property_type_area_id = $request->available_type;
         $properties->area_type_id = $request->built_area_type;
@@ -111,7 +127,14 @@ class PropertyController extends Controller
 
         $properties->save();
 
-        return redirect(route('property.index'));
+        if ($request->available_for==1){
+            $type = 'residence';
+        } else {
+            $type = 'commercial';
+        }
+
+        return redirect(url('property?type='.$type));
+
     }
 
     public function show($id) {

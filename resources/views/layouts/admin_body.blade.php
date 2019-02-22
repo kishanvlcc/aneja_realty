@@ -241,7 +241,7 @@
 
     var base_host = window.location.origin;
     //var base_url = base_host;
-    var base_url=base_host+'/blog/public';
+    var base_url=base_host+'/aneja_realty/public';
 
     /*$(function() {
         var date = new Date();

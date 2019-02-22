@@ -11,4 +11,8 @@ class Property extends Model
     {
         return $this->belongsTo('App\PropertyType','available_for');
     }
+    public function getLocation()
+    {
+        return $this->belongsTo('App\PropertyLocation','short_address');
+    }
 }

@@ -91,10 +91,10 @@
                         } ?></td>
                   <!-- <td>@if($property->available_for==1) {{$property->bedrooms}} BHK  @elseif($property->bedrooms==0) {{'1 Room Set'}} @else {{''}}@endif</td> -->
                     <td>{{ucfirst($property->getType->name)}}</td>
-                    <td>{{$property->rent_price}}</td>
+                    <td>{{number_format($property->rent_price)}}</td>
                     <td>{{$property->total_floors}}</td>
                     <td>{{$property->created_at}}</td>
-                    <td>{{ucfirst($property->short_address)}}</td>
+                    <td>{{ucfirst($property->getLocation->name)}}</td>
 
                     <td align="center">
                         <a href="{{URL :: asset('property/'.$property->id)}}/edit" class="btn btn-edit"   title="Edit"><i class="fa fa-pencil"></i></a>

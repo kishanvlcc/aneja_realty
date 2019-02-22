@@ -59,9 +59,6 @@
                                 <div class="form-group">
                                     {!! Form::label('Title') !!}<span class="red">*</span>
                                     {!! Form::text('title',$properties->title,["id"=>'firstname',"class"=>"form-control" ]) !!}
-
-                                    </select>
-
                                 </div>
 
                             </div>
@@ -75,14 +72,9 @@
 
                                             <option value='{{$type->id}}' @if($properties->available_for==$type->id){{'selected'}} @endif>{{$type->name}}</option>
                                         @endforeach
-
                                     </select>
-
                                 </div>
                             </div>
-                            
-                            
-
                         </div>
 
 
@@ -121,8 +113,49 @@
 
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::label('Client Name') !!}<span class="red">*</span>
+                                    {!! Form::text('client_name',$properties->client_name,["id"=>'client_name',"class"=>"form-control" ]) !!}
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::label('Client Mobile') !!}<span class="red">*</span>
+                                    {!! Form::text('client_mobile',$properties->client_mobile_number,["id"=>'client_mobile',"class"=>"form-control" ]) !!}
+                                </div>
+                            </div>
 
 
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::label('Client Email') !!}<span class="red"></span>
+                                    {!! Form::text('client_email',$properties->client_email,["id"=>'client_email',"class"=>"form-control" ]) !!}
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::label('Building Stage') !!}<span class="red">*</span>
+                                    <select class="form-control js-example-basic-multiple"  name="building_stage" id="building_stage" >
+                                        <option value=''>Select Stage</option>
+                                        <option value='UC' @if($properties->building_stage=='UC'){{'selected'}} @endif>Under Construction</option>
+                                        <option value='CMPLT' @if($properties->building_stage=='CMPLT'){{'selected'}} @endif>Complete</option>
+                                        <option value='BOOK' @if($properties->building_stage=='BOOK'){{'selected'}} @endif>Booking</option>
+                                    </select>
+
+                                </div>
+                            </div>
                         </div>
 
                         <div class="row">
@@ -248,8 +281,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('Location') !!}<span class="red">*</span>
-                                    {!! Form::text('short_address',$properties->short_address,["id"=>'short_address',"class"=>"form-control","placeholder"=>"Enter Location" ]) !!}
-
+                                    <select class="form-control js-example-basic-multiple"  name="short_address" id="short_address" >
+                                        <option value=''>Select Location</option>
+                                        @foreach($locations as $location)
+                                            <option value='{{$location->id}}' @if($properties->short_address==$location->id) {{'selected'}} @endif>{{$location->name}}</option>
+                                        @endforeach
+                                    </select>
 
                                 </div>
                             </div>
@@ -366,6 +403,20 @@
                         },
                         bedrroms: {
                             required: true,
+                        },
+                        client_name: {
+                            required: true,
+                        },
+                        client_mobile: {
+                            required: true,
+                            digits :true,
+                            minlength: 10
+                        },
+                        client_email: {
+                            email: true,
+                        },
+                        building_stage: {
+                            required: true
                         },
 
                         total_floors: {
