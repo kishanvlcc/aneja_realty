@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class DashboardController extends Controller
 {
     public function index(){
-        $totalResidence = Property::where('available_for','1')->count();
-        $totalCommercial = Property::where('available_for','2')->count();
+        $totalResidence = Property::where('user_id',Auth::User()->id)->where('available_for','1')->count();
+        $totalCommercial = Property::where('user_id',Auth::User()->id)->where('available_for','2')->count();
     	return view('dashboard',compact('totalResidence','totalCommercial'));
     }
 
