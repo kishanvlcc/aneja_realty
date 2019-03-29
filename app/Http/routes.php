@@ -25,6 +25,7 @@ Route::group( ['middleware' => 'auth' ], function()
 {
     Route::resource('dashboard','DashboardController');
     Route::resource('property','PropertyController');
+    Route::post('property/search','PropertyController@index');
     Route::resource('ajax/gatData','DashboardController@getData');
     
 });

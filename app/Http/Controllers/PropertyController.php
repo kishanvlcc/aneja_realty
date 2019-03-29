@@ -19,13 +19,36 @@ class PropertyController extends Controller
 {
     public function index(Request $request){
 
+        $data['locations'] = PropertyLocation::where('status',1)->orderBy('name')->get();
         $type = $request->type;
         if ($type == 'residence'){
             $available_for = '1';
         } else {
             $available_for = '2';
         }
-        $data['properties'] = Property::where('user_id',Auth::User()->id)->where('available_for',$available_for)->where('status','1')->orderBy('created_at','DESC')->get();
+        $data['properties'] = DB::table('properties')->where('user_id',Auth::User()->id)->where('available_for',$available_for)->where('status','1');
+        if (isset($request->min_amt) and $request->min_amt!="") {
+            $data['properties']->where('rent_price','>=',$request->min_amt);
+        }
+        if (isset($request->max_amt) and $request->max_amt!="") {
+            $data['properties']->where('rent_price','<=',$request->max_amt);
+        }
+        if (isset($request->short_address) and $request->short_address!="") {
+            $data['properties']->where('short_address',$request->short_address);
+        }
+        if (isset($request->property_type) and $request->property_type!="") {
+            $data['properties']->where('property_type',$request->property_type);
+        }
+        if (isset($request->building_stage) and $request->building_stage!="") {
+            $data['properties']->where('building_stage',$request->building_stage);
+        }
+        if (isset($request->floor_number) and $request->floor_number!="") {
+            $data['properties']->where('floor_number',$request->floor_number);
+        }
+
+        $data['properties'] = $data['properties']->orderBy('created_at','DESC')->get();
+        $data['type'] = $type;
+        /*$data['properties'] = Property::where('user_id',Auth::User()->id)->where('available_for',$available_for)->where('status','1')->orderBy('created_at','DESC')->get();*/
         return view('property/index')->with($data);
     }
 
@@ -122,6 +145,7 @@ class PropertyController extends Controller
         $properties->flat_configuration = $request->flat_cofiguration;
         $properties->description = $request->description;
         $properties->complete_address = $request->complete_address;
+        $properties->property_type = $request->property_type;
         $properties->updated_by = Auth::User()->id;
         $properties->total_file = $request->total_file;
 
@@ -177,4 +201,5 @@ class PropertyController extends Controller
             'description'=> 'required|min:10',
         ],$message);
     }
+
 }

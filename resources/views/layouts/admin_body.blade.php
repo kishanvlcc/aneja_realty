@@ -58,10 +58,10 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{url('dashboard')}}" class="brand-link">
-      <img src="{!! URL::asset('assets/admin/img/logo.png') !!}"
+      <!-- <img src="{!! URL::asset('assets/admin/img/logo.png') !!}"
            alt="VLCC"
            class="brand-image img-circle elevation-3"
-           style="opacity: .8">
+           style="opacity: .8"> -->
       <span class="brand-text font-weight-light">Aneja Realty</span>
     </a>
 

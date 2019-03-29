@@ -332,6 +332,16 @@
                                 </select>
 
                                 </div>
+                                <div class="col-md-6">
+                                {!! Form::label('Property Type') !!}
+
+                                <select class="form-control js-example-basic-multiple"  name="property_type" id="property_type" >
+                                    <option value=''>Select Type</option>
+                                    <option value='1' @if($properties->property_type==1){{'selected'}} @endif>Sell</option>
+                                    <option value='2' @if($properties->property_type==2){{'selected'}} @endif>Rent</option>
+                                </select>
+
+                            </div>
 
 
                         </div>
