@@ -136,30 +136,30 @@
                       <i class="fa fa-angle-left right"></i>
                   </p>
               </a>
-             {{-- <ul class="nav nav-treeview">
+              <ul class="nav nav-treeview">
                   <li class="nav-item">
-                      <a href="{{url('department')}}" class="nav-link">
+                      <a href="{{url('state')}}" class="nav-link">
                               <i class="fa fa-circle-o nav-icon"></i>
-                              <p>Departments</p>
+                              <p>State</p>
                           </a>
                   </li>
               </ul>
               <ul class="nav nav-treeview">
                   <li class="nav-item">
-                      <a href="{{url('designations')}}" class="nav-link">
+                      <a href="{{url('city')}}" class="nav-link">
                               <i class="fa fa-circle-o nav-icon"></i>
-                              <p>Designation</p>
+                              <p>City</p>
                           </a>
                   </li>
               </ul>
               <ul class="nav nav-treeview">
                   <li class="nav-item">
-                      <a href="{{url('centers')}}" class="nav-link">
+                      <a href="{{url('location')}}" class="nav-link">
                               <i class="fa fa-circle-o nav-icon"></i>
-                              <p>Centers</p>
+                              <p>Location</p>
                           </a>
                   </li>
-              </ul>--}}
+              </ul>
           </li>
 
           <li class="nav-item has-treeview">

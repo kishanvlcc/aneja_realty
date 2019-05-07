@@ -135,6 +135,9 @@
                                         <option value='basement'>Basement</option>
                                         <option value='lower ground floor'>Lower Ground Floor</option>
                                         <option value='ground floor'>Ground Floor</option>
+                                        <option value='building'>Building</option>
+                                        <option value='kothi'>Kothi</option>
+                                        <option value='plot'>Plot</option>
                                         <?php
                                         for ($i=1;$i<100;$i++){
                                         if ($i==1)
@@ -327,13 +330,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('No Of Toilet') !!}
-                                    <select class="form-control js-example-basic-multiple"  name="flat_cofiguration" id="flat_cofiguration" >
+                                    {!! Form::text('flat_cofiguration','',["id"=>'flat_cofiguration',"class"=>"form-control",'maxlength'=>'3' ]) !!}
+                                    <!-- <select class="form-control js-example-basic-multiple"  name="flat_cofiguration" id="flat_cofiguration" >
                                         <option value=''>Select Toilet</option>
                                         <?php for($i=1;$i<=10;$i++) { ?>
                                         <option value='<?php echo $i ?>'><?php echo $i; ?></option>
                                         <?php } ?>
 
-                                    </select>
+                                    </select> -->
 
                                 </div>
                             </div>
@@ -582,6 +586,9 @@
                             required: true,
                             digits :true
 
+                        },
+                        flat_cofiguration: {
+                            digits :true
                         },
                         short_address: {
                             required: true

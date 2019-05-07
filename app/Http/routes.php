@@ -27,5 +27,8 @@ Route::group( ['middleware' => 'auth' ], function()
     Route::resource('property','PropertyController');
     Route::post('property/search','PropertyController@index');
     Route::resource('ajax/gatData','DashboardController@getData');
+    Route::resource('city','CityController');
+    Route::resource('state','StateController');
+    Route::resource('location','LocationController');
     
 });

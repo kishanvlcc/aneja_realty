@@ -53,6 +53,8 @@
                        </ol>
                        <!-- <p><a class="btn-modal" href="#ex1" rel="modal:open">Search Property</a></p> -->
                        <button type="button" class="btn btn-info btn-lg" id="test-modal" data-toggle="modal" data-target="#myModal">Click To Search</button>
+
+                        <button type="button" class="btn btn-info btn-lg" id="print">Click To Print</button>
                     
                     </div>                    
                  </div>
@@ -317,6 +319,10 @@
   $("#test-modal").click(function(){
     $("#myModal123").modal('show');
   });
+
+  $('#print').click(function(){
+     window.print();
+});
 </script>
 @endsection
 

@@ -100,6 +100,9 @@
                                         <option value='basement' @if($properties->floor_number=='basement') {{'selected'}} @endif>Basement</option>
                                         <option value='lower ground floor' @if($properties->floor_number=='lower ground floor') {{'selected'}} @endif>Lower Ground Floor</option>
                                         <option value='ground floor' @if($properties->floor_number=='ground floor') {{'selected'}} @endif>Ground Floor</option>
+                                         <option value='building' @if($properties->floor_number=='building') {{'selected'}} @endif>Building</option>
+                                          <option value='kothi' @if($properties->floor_number=='kothi') {{'selected'}} @endif>Kothi</option>
+                                           <option value='plot' @if($properties->floor_number=='plot') {{'selected'}} @endif>Plot</option>
                                         <?php
                                         for ($i=1;$i<100;$i++){
                                         if ($i==1)
@@ -305,14 +308,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('No Of Toilet') !!}
+                                    {!! Form::text('flat_cofiguration',$properties->flat_configuration,["id"=>'flat_cofiguration',"class"=>"form-control",'maxlength'=>'3' ]) !!}
 
-                                    <select class="form-control js-example-basic-multiple"  name="flat_cofiguration" id="flat_cofiguration" >
+                                    <!-- <select class="form-control js-example-basic-multiple"  name="flat_cofiguration" id="flat_cofiguration" >
                                         <option value=''>Select Toilet</option>
                                         <?php for($i=1;$i<=10;$i++) { ?>
                                         <option value='<?php echo $i ?>' @if($properties->flat_configuration==$i){{'selected'}} @endif><?php echo $i; ?></option>
                                         <?php } ?>
-
-                                    </select>
+                                    </select> -->
 
                                 </div>
                             </div>
@@ -442,6 +445,10 @@
                         },
                         rent_price: {
                             required: true,
+                            digits :true
+
+                        },
+                        flat_cofiguration: {
                             digits :true
 
                         },
